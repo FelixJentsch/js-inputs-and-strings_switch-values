@@ -14,13 +14,34 @@ Hint: the HTML entity for the switch button is: &updownarrow
 */
 
 const firstInput = document.querySelector('[data-js="first-input"]');
+const secondInput = document.querySelector('[data-js="second-input"]');
 const uppercaseButton = document.querySelector('[data-js="button-uppercase"]');
 const lowercaseButton = document.querySelector('[data-js="button-lowercase"]');
+const switchButton = document.querySelector('[data-js="button-switch"]');
 
 uppercaseButton.addEventListener("click", () => {
-  firstInput.value = firstInput.value.toUpperCase();
+  const firstUppercaseText = firstInput.value.toUpperCase();
+  firstInput.value = firstUppercaseText;
+  const secondUppercaseText = secondInput.value.toUpperCase();
+  secondInput.value = secondUppercaseText;
 });
 
 lowercaseButton.addEventListener("click", () => {
-  firstInput.value = firstInput.value.toLowerCase();
+  const firstLowercaseText = firstInput.value.toLowerCase(); // better soulution
+  firstInput.value = firstLowercaseText;
+  const secondLowercaseText = secondInput.value.toLowerCase(); // better soulution
+  secondInput.value = secondLowercaseText;
+});
+
+/*
+lowercaseButton.addEventListener("click", () => {
+  firstInput.value = firstInput.value.toLowerCase();              // first solution
+  secondInput.value = firstInput.value.toLowerCase();
+});
+*/
+
+switchButton.addEventListener("click", () => {
+  const tempValue = firstInput.value;
+  firstInput.value = secondInput.value;
+  secondInput.value = tempValue;
 });
